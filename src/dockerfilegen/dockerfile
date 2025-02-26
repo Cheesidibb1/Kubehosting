@@ -1,0 +1,13 @@
+# Use Python as base image for analysis
+FROM python:3.9-slim
+
+WORKDIR /analyzer
+
+# Copy the Python script for analysis
+COPY /src /analyzer
+
+# Install any necessary dependencies for the script
+RUN pip install --no-cache-dir docker
+
+# Set entrypoint to the Python script
+CMD ["python", "/analyzer/main.py"]
